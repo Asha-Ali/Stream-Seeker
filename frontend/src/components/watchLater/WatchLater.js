@@ -13,7 +13,7 @@ const WatchLater = () => {
 
     const fetchWatchLaterMovies = async () => {
         try {
-        const response = await fetch(`/users/${id}/watch-later`);
+        const response = await fetch(`/watchLater/${id}`);
         if (response.ok) {
             const data = await response.json();
             setWatchLaterMovies(data.watchLater);
@@ -28,7 +28,7 @@ const WatchLater = () => {
     const removeFromWatchLater = async (movieId) => {
         const id = window.localStorage.getItem('userId');
         try {
-            const response = await fetch(`/users/${id}/watch-later/${movieId}`, {
+            const response = await fetch(`/watchLater/${id}/${movieId}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const WatchLater = () => {
             });
     
             if (response.ok) {
-                const response = await fetch(`/users/${id}/watch-later`);
+                const response = await fetch(`/watchLater/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setWatchLaterMovies(data.watchLater);
