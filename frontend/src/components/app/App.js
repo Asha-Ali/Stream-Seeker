@@ -13,10 +13,12 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import StreamingInfo from '../movielinks/StreamingInfo';
 
 const App = () => {
     return (
         <Routes>
+          <Route path='/streaming-info/:id/:title' element={<StreamingInfo/>} />
           <Route path='/users/:id/watch-later' element={<WatchLater />} />
           <Route path='/homepage' element={<Homepage/>}/>
           <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>

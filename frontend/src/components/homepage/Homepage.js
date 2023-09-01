@@ -1,6 +1,5 @@
 import React, {useState} from "react";
-import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom"; // Import React Router modules
-import MovieLinks from "../movielinks/MovieLinks";
+import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom"; 
 import '../homepage/Homepage.css'
 import Navbar from "../Navbar/Navbar";
 
@@ -71,7 +70,10 @@ const Homepage = () => {
               <div>
                 {searchResults.map((result, index) => (
                   <div key={index}>
-                    <Link to={`/movie-links/${result.id}/${result.title}`} style={{ textDecoration: 'none' }}><h2>{result.title}</h2></Link>
+                    <Link to={`/streaming-info/${result.id}/${result.title}`} 
+                          style={{ textDecoration: 'none' }}>
+                          <h2>{result.title}</h2>
+                    </Link>
                     <p>Synopsis: {result.overview}</p>
                     <div className="poster-container">
                       <img
