@@ -5,7 +5,7 @@ describe("WatchLater Page", () => {
             body: { watchLater: [] },
         });
     
-        cy.request("/users/64e47558a12b1d6b91c90740/watch-later"); // Replace "someUserId" with a valid user ID
+        cy.request("/users/64e47558a12b1d6b91c90740/watch-later"); 
     
         cy.get("h2").should("contain", "Movies in Watch Later");
         cy.get(".poster-image").should("not.exist");
