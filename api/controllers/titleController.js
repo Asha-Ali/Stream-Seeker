@@ -1,4 +1,3 @@
-const Movie = require("../models/movie");
 const Title = require ("../models/movie")
 
 
@@ -19,10 +18,7 @@ const TitleController = {
         const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${title}&api_key=d98fecd179f9c5fabd732500cb91f754`);
         const data = await response.json();
         res.status(200).json(data.results);
-        
-    },
-  
-
+    }
 }
 
 
