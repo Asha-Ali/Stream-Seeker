@@ -22,8 +22,9 @@ const Homepage = () => {
 
     const addToWatchLater = async (movie) => {
         const id = window.localStorage.getItem('userId')
+        console.log("ID", id)
         try {
-            const response = await fetch(`/users/${id}/watch-later`, {
+            const response = await fetch(`/watchLater/${id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -34,7 +35,7 @@ const Homepage = () => {
             });
 
             if (response.ok) {
-              const response = await fetch(`/users/${id}/watch-later`);
+              const response = await fetch(`/watchLater/${id}`);
                 if (response.ok) {
                     const data = await response.json();
                     setWatchLaterMovies(data.watchLater);

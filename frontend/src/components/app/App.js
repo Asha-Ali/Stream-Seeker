@@ -19,7 +19,7 @@ const App = () => {
     return (
         <Routes>
           <Route path='/streaming-info/:id/:title' element={<StreamingInfo/>} />
-          <Route path='/users/:id/watch-later' element={<WatchLater />} />
+          <Route path='/watchLater/:id' element={<WatchLater />} />
           <Route path='/homepage' element={<Homepage/>}/>
           <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
           <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
