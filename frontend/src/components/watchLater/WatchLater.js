@@ -61,7 +61,7 @@ const WatchLater = () => {
         <ul>
         {watchLaterMovies.map((movie) => (
             <div key={movie.id}>
-            <Link to={`/movie-links/${movie.id}/${movie.title}`} style={{ textDecoration: 'none' }}><h2>{movie.title}</h2></Link>
+            <Link to={`/streaming-info/${movie.id}/${movie.title}`} style={{ textDecoration: 'none' }}><h2>{movie.title}</h2></Link>
             <p>Synopsis: {movie.overview}</p>
             <div className="poster-container">
                     <img
