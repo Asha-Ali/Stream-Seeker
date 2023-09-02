@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 
 function StreamingInfo() {
     const [streamingInfo, setStreamingInfo] = useState(null);
-    const { id }= useParams()
+    const { id } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,7 +23,17 @@ function StreamingInfo() {
                 const response = await fetch(url, options);
                 if (response.ok) {
                     const data = await response.json();
-                    setStreamingInfo(data.result.streamingInfo.gb);
+                    const gbStreamingInfo = data.result.streamingInfo.gb
+                    // Extract unique service names
+                    const uniqueServiceNames = Array.from(
+                        new Set(gbStreamingInfo.map((info) => info.service))
+                    );
+                    // Create an array of serviceInfo objects with unique service names
+                    const filteredInfo = uniqueServiceNames.map((serviceName) =>
+                        gbStreamingInfo.find((info) => info.service === serviceName)
+                    );
+                    setStreamingInfo(filteredInfo);
+
                 } else {
                     throw new Error(`Fetch request failed with status: ${response.status}`);
                 }
@@ -33,7 +43,7 @@ function StreamingInfo() {
         };
 
         fetchData();
-    }, []);
+    }, [id]);
 
     return (
         <div>
@@ -57,5 +67,3 @@ function StreamingInfo() {
 }
 
 export default StreamingInfo;
-
-
