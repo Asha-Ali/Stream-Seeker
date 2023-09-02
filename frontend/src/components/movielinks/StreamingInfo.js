@@ -24,11 +24,11 @@ function StreamingInfo() {
                 if (response.ok) {
                     const data = await response.json();
                     const gbStreamingInfo = data.result.streamingInfo.gb
-                    // Extract unique service names
+
                     const uniqueServiceNames = Array.from(
                         new Set(gbStreamingInfo.map((info) => info.service))
                     );
-                    // Create an array of serviceInfo objects with unique service names
+
                     const filteredInfo = uniqueServiceNames.map((serviceName) =>
                         gbStreamingInfo.find((info) => info.service === serviceName)
                     );

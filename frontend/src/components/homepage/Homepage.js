@@ -57,7 +57,7 @@ const Homepage = () => {
         <div className="main-homepage-div">
             <Navbar />
           <div className="homepage-content">
-          <h1 id="heading">Search for a movie or tv show title</h1>
+          <h1 id="heading">Search for a Movie or TV show</h1>
           <input
             type="text"
             placeholder="Enter a title"
@@ -73,7 +73,7 @@ const Homepage = () => {
                   <div key={index}>
                     <Link to={`/streaming-info/${result.id}/${result.title}`} 
                           style={{ textDecoration: 'none' }}>
-                          <h2>{result.title}</h2>
+                          <h2>{result.title ? result.title : result.name}</h2>
                     </Link>
                     <p>Synopsis: {result.overview}</p>
                     <div className="poster-container">
