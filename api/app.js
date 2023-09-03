@@ -8,7 +8,8 @@ const JWT = require("jsonwebtoken");
 const authenticationRouter = require("./routes/authentication");
 const usersRouter = require("./routes/users");
 const homepageRouter = require('./routes/homepageRouter')
-const watchLaterRouter = require('./routes/watchLaterRouter')
+const watchLaterRouter = require('./routes/watchLaterRouter');
+const streamingInfoRouter = require('./routes/streamingInfoRouter');
 
 const app = express();
 
@@ -45,6 +46,7 @@ app.use('/homepage', homepageRouter);
 app.use("/tokens", authenticationRouter);
 app.use("/users", usersRouter);
 app.use("/watchLater", watchLaterRouter)
+app.use('/streaming-info', streamingInfoRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

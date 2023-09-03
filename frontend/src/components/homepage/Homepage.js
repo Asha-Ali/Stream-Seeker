@@ -71,7 +71,7 @@ const Homepage = () => {
               <div>
                 {searchResults.map((result, index) => (
                   <div key={index}>
-                    <Link to={`/streaming-info/${result.id}/${result.title}`} 
+                    <Link to={`/streaming-info/${result.id}/${result.title ? result.title : result.name}`} 
                           style={{ textDecoration: 'none' }}>
                           <h2>{result.title ? result.title : result.name}</h2>
                     </Link>
