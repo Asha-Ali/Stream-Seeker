@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom"; 
+import { Link } from "react-router-dom"; 
 import '../homepage/Homepage.css'
 import Navbar from "../Navbar/Navbar";
 
@@ -22,7 +22,7 @@ const Homepage = () => {
 
     const addToWatchLater = async (movie) => {
         const id = window.localStorage.getItem('userId')
-        console.log("ID", id)
+
         try {
             const response = await fetch(`/watchLater/${id}`, {
                 method: "POST",
@@ -83,7 +83,7 @@ const Homepage = () => {
                         alt={result.title}
                       />
                     </div>
-                    <p>Rating: {result.vote_average}</p>
+                    <p>Rating: {result.vote_average ? result.vote_average.toFixed(1) : 'N/A'}</p>
                     <button
                             onClick={() => addToWatchLater(result)}
                             disabled={isAddedToWatchLater(result)}

@@ -61,7 +61,9 @@ const WatchLater = () => {
         <ul>
         {watchLaterMovies.map((movie) => (
             <div key={movie.id}>
-            <Link to={`/streaming-info/${movie.id}/${movie.title}`} style={{ textDecoration: 'none' }}><h2>{movie.title}</h2></Link>
+            <Link to={`/streaming-info/${movie.id}/${movie.title}`} style={{ textDecoration: 'none' }}>
+                <h2>{movie.title ? movie.title : movie.name}</h2>
+            </Link>
             <p>Synopsis: {movie.overview}</p>
             <div className="poster-container">
                     <img
@@ -70,7 +72,7 @@ const WatchLater = () => {
                     alt={movie.title}
                     />
             </div>
-            <p>Rating: {movie.vote_average}</p>
+            <p>Rating: {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}</p>
             <button onClick={() => removeFromWatchLater(movie.id)}>
                 Remove from Watch Later
             </button>
@@ -85,3 +87,4 @@ const WatchLater = () => {
 }
 
 export default WatchLater;
+

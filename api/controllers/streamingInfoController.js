@@ -1,19 +1,53 @@
-
 const StreamingInfoController = {
 
-    GetByTitle: async (req, res) => {
-        const title = req.params.title;
-        const response = await fetch(`https://api.themoviedb.org/3/search/multi?query=${title}&api_key=d98fecd179f9c5fabd732500cb91f754`);
-        const data = await response.json();
+    GetStreamingInfo: async (req, res) => {
+        const { id, title } = req.params;
 
-        if (!title) {
-            return res.status(404).json({error: "Title not found"});
+        try {
+            const options = {
+                method: 'GET',
+                headers: {
+                    'X-RapidAPI-Key': 'eccbddc25dmsh68d0b312c157661p115c55jsn982b6a55478b',
+                    'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
+                },
+            };
+
+            const movieUrl = new URL('https://streaming-availability.p.rapidapi.com/get');
+            movieUrl.searchParams.append('output_language', 'en');
+            movieUrl.searchParams.append('tmdb_id', `movie/${id}`);
+
+            const tvUrl = new URL('https://streaming-availability.p.rapidapi.com/get');
+            tvUrl.searchParams.append('output_language', 'en');
+            tvUrl.searchParams.append('tmdb_id', `tv/${id}`);
+
+            const [movieResponse, tvResponse] = await Promise.all([
+                fetch(movieUrl.toString(), options),
+                fetch(tvUrl.toString(), options),
+            ]);
+
+            const movieData = await movieResponse.json();
+            const tvData = await tvResponse.json();
+
+            const movieStreamingInfo = (movieData.result?.streamingInfo?.gb || []);
+            const tvStreamingInfo = (tvData.result?.streamingInfo?.gb || []);
+
+            const allStreamingInfo = [...movieStreamingInfo, ...tvStreamingInfo];
+            
+            const uniqueServiceNames = Array.from(
+                new Set(allStreamingInfo.map((info) => info.service))
+            );
+
+            const cleanedInfo = uniqueServiceNames.map((serviceName) =>
+                allStreamingInfo.find((info) => info.service === serviceName)
+            );
+            
+            res.status(200).json(cleanedInfo);
+
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
         }
-        res.status(200).json(data.results);
     },
-}
-
-
+};
 
 module.exports = StreamingInfoController;
-
