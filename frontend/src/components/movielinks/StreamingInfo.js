@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import primeLogo from ".//logoPNGs/prime-logo.jpeg"
+import iplayerLogo from './/logoPNGs/iplayer-logo.png'
+import nowLogo from './/logoPNGs/now-logo.jpeg'
+
+const serviceLogoUrls = {
+  prime: primeLogo, 
+  iplayer: iplayerLogo,
+  now: nowLogo
+  // Add more services 
+};
 
 function StreamingInfo() {
   const [streamingInfo, setStreamingInfo] = useState(null);
@@ -31,9 +41,11 @@ function StreamingInfo() {
           {streamingInfo.map((serviceInfo, index) => (
             <div key={index}>
               <h2>{serviceInfo.service}</h2>
-              <a href={serviceInfo.link} target="_blank" rel="noopener noreferrer">
-                {serviceInfo.link}
-              </a>
+              {serviceLogoUrls[serviceInfo.service] && (
+                <a href={serviceInfo.link} target="_blank" rel="noopener noreferrer">
+                  <img src={serviceLogoUrls[serviceInfo.service]} alt={serviceInfo.service} />
+                </a>
+              )}
             </div>
           ))}
         </div>
