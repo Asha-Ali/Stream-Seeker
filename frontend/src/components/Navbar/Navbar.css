@@ -15,6 +15,11 @@ text-decoration: none;
 color: #d41616;
 }
 
+.links .active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 .links {
 list-style: none;
 display: flex;

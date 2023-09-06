@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "../Navbar/Navbar.css"
 import logo from '../../images/whitelogo.png'
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
     const [loggedInUser, setLoggedInUser] = useState(false)
     const userId = window.localStorage.getItem('userId')
+    const location = useLocation();
+    const pathname = location.pathname
 
     useEffect(() => {
         if (userId) {
             setLoggedInUser(true);
         }
     }, []);
+
+    const handleLogout = () => {
+        window.localStorage.removeItem("token")
+        window.localStorage.removeItem("userId")
+    }
 
     return (
 
@@ -23,9 +31,9 @@ const Navbar = () => {
             </div>
             </div>
             <ul className="links">
-                <li><a href="/homepage">Home</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/signup">Signup</a></li>
+                <li><Link to="/homepage" className={pathname === "/homepage" ? "active" : ""}>Home</Link></li>
+                <li><Link to="/login" className={pathname === "/login" ? "active" : ""}>Login</Link></li>
+                <li><Link to="/signup" className={pathname === "/signup" ? "active" : ""}>Signup</Link></li>
             </ul>
         </>
         )}
@@ -37,9 +45,10 @@ const Navbar = () => {
                 </div>
             </div>
             <ul className="links">
-                <li><a href="/homepage">Home</a></li>
-                <li><a href={"/users/" + userId}>Your Profile</a></li>
-                <li><a href={"/watchLater/" + userId}>Watch Later</a></li>
+                <li><Link to="/homepage" className={pathname === "/homepage" ? "active" : ""}>Home</Link></li>
+                <li><Link to={`/users/${userId}`} className={pathname === `/users/${userId}` ? "active" : ""}>Your Profile</Link></li>
+                <li><Link to={`/watchLater/${userId}`} className={pathname === `/watchLater/${userId}` ? "active" : ""}>Watch Later</Link></li>
+                <li><a href='/login' onClick={handleLogout}>Logout</a></li>
             </ul>
             </>
         )}
