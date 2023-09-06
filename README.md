@@ -1,16 +1,17 @@
-# Acebook
+# StreamSeeker
 
-In this project, you are tasked with working on an existing application. A significant part of the challenge will be to familiarise yourself with the codebase you've inherited, as you work to **improve and extend** it.
+StreamSeeker is a web-app that allows you to search for a movie or TV show and get links for where you can stream it. 
 
-## Documentation
+If you sign up as a user, you can also save your search results to come back to later. 
 
-[More documentation of the codebase and its architecture can be found here.](./DOCUMENTATION.md) It's recommended you all read this _after making sure the whole setup below worked for everyone_. Then work together on a diagram describing how the application works.
+Streamseekers saves you the time and effort of searching each of your streaming services looking for your movie or show. 
 
-[A template Miro board for your diagrams can be found here.](https://miro.com/app/board/uXjVPqNzFfc=/?share_link_id=360271550320) Make sure your validate your diagrams with your coach.
+## Technologies used:
 
-## Card wall
-
-REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
+- MERN stack (MongoDB, Express, React, Node.js)
+- Testing with Cypress 
+- TMDB api
+- Movie of the Night api 
 
 ## Quickstart
 
@@ -20,17 +21,17 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
    ```
    brew install nvm
    ```
-   Then follow the instructions to update your `~/.bash_profile`.
 2. Open a new terminal
-3. Install the latest version of [Node.js](https://nodejs.org/en/), currently `18.1.0`.
+3. Install the latest version of [Node.js]
+
    ```
    nvm install 18
    ```
 
-### Set up your project
+### Run this project locally
 
 1. Fork this repository
-2. Rename your fork to `acebook-<team name>`
+2. Rename your fork to `StreamSeeker-<your fork name>`
 3. Clone your fork to your local machine
 4. Install Node.js dependencies for both the `frontend` and `api` directories.
    ```
@@ -40,15 +41,15 @@ REPLACE THIS TEXT WITH A LINK TO YOUR CARD WALL
    ; npm install
    ```
 
-> You might get warning messages about the installed dependencies at this point. You can ignore them, as long as the installation process doesn't fail. If the setup fails at this point, don't wait for too long and reach out to your coach.
-
 5. Install an ESLint plugin for your editor. For example: [`linter-eslint`](https://github.com/AtomLinter/linter-eslint) for Atom.
+
 6. Install MongoDB
    ```
    brew tap mongodb/brew
    brew install mongodb-community@5.0
    ```
    *Note:* If you see a message that says `If you need to have mongodb-community@5.0 first in your PATH, run:`, follow the instruction. Restart your terminal after this.
+   
 7. Start MongoDB
    ```
    brew services start mongodb-community@5.0
@@ -134,16 +135,8 @@ Some people occasionally experience MongoDB connection errors when running the t
 - Check that MongoDB is installed using `mongo --version`
 - Check that it's running using `brew services list`
 
-If you have issues that are not resolved by these tips, please reach out to a coach and, once the issue is resolved, we can add a new tip!
 
 
 
-<!-- BEGIN GENERATED SECTION DO NOT EDIT -->
 
----
 
-**How was this resource?**  
-[😫](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😫) [😕](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😕) [😐](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😐) [🙂](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=🙂) [😀](https://airtable.com/shrUJ3t7KLMqVRFKR?prefill_Repository=makersacademy%2Facebook-mern-template&prefill_File=README.md&prefill_Sentiment=😀)  
-Click an emoji to tell us.
-
-<!-- END GENERATED SECTION DO NOT EDIT -->

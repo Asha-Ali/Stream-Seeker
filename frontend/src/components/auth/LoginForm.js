@@ -22,11 +22,11 @@ const LogInForm = ({ navigate }) => {
     })
 
     if(response.status !== 201) {
-      console.log("yay")
+      console.log("oops")
       setErrorMessage("Invalid user!");
       navigate('/login')
     } else {
-      console.log("oop")
+      console.log("yay")
       let data = await response.json()
       window.localStorage.setItem("token", data.token)
       window.localStorage.setItem("userId", data.userId)

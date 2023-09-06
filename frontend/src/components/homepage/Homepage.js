@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link, BrowserRouter as Router, Route, Switch } from "react-router-dom"; 
+import { Link } from "react-router-dom"; 
 import '../homepage/Homepage.css'
 import Navbar from "../Navbar/Navbar";
 
@@ -22,7 +22,7 @@ const Homepage = () => {
 
     const addToWatchLater = async (movie) => {
         const id = window.localStorage.getItem('userId')
-        console.log("ID", id)
+
         try {
             const response = await fetch(`/watchLater/${id}`, {
                 method: "POST",
@@ -57,7 +57,7 @@ const Homepage = () => {
         <div className="main-homepage-div">
             <Navbar />
           <div className="homepage-content">
-          <h1 id="heading">Search for a movie or tv show title</h1>
+          <h1 id="heading">Search for a Movie or TV show</h1>
           <input
             type="text"
             placeholder="Enter a title"
@@ -71,10 +71,7 @@ const Homepage = () => {
               <div>
                 {searchResults.map((result, index) => (
                   <div key={index}>
-                    <Link to={`/streaming-info/${result.id}/${result.title}`} 
-                          style={{ textDecoration: 'none' }}>
-                          <h2>{result.title}</h2>
-                    </Link>
+                    <h2>{result.title ? result.title : result.name}</h2>
                     <p>Synopsis: {result.overview}</p>
                     <div className="poster-container">
                       <img
@@ -83,7 +80,11 @@ const Homepage = () => {
                         alt={result.title}
                       />
                     </div>
-                    <p>Rating: {result.vote_average}</p>
+                    <p>Rating: {result.vote_average ? result.vote_average.toFixed(1) : 'N/A'}</p>
+                    <Link to={`/streaming-info/${result.id}/${result.title ? result.title : result.name}`} 
+                          style={{ textDecoration: 'none' }}>
+                          <p><strong>Click here for Streaming Links</strong></p>
+                    </Link>
                     <button
                             onClick={() => addToWatchLater(result)}
                             disabled={isAddedToWatchLater(result)}
