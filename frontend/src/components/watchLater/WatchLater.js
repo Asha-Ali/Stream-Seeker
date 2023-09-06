@@ -61,21 +61,23 @@ const WatchLater = () => {
         <ul>
         {watchLaterMovies.map((movie) => (
             <div key={movie.id}>
-            <Link to={`/streaming-info/${movie.id}/${movie.title}`} style={{ textDecoration: 'none' }}>
                 <h2>{movie.title ? movie.title : movie.name}</h2>
-            </Link>
-            <p>Synopsis: {movie.overview}</p>
-            <div className="poster-container">
-                    <img
-                    className="poster-image"
-                    src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} // poster_path is null in some movies
-                    alt={movie.title}
-                    />
-            </div>
-            <p>Rating: {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}</p>
-            <button onClick={() => removeFromWatchLater(movie.id)}>
-                Remove from Watch Later
-            </button>
+                <p>Synopsis: {movie.overview}</p>
+                <div className="poster-container">
+                        <img
+                        className="poster-image"
+                        src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} // poster_path is null in some movies
+                        alt={movie.title}
+                        />
+                </div>
+                <p>Rating: {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}</p>
+                <Link to={`/streaming-info/${movie.id}/${movie.title ? movie.title : movie.name}`} 
+                    style={{ textDecoration: 'none' }}>
+                    <p><strong>Click here for Streaming Links</strong></p>
+                </Link>
+                <button onClick={() => removeFromWatchLater(movie.id)}>
+                    Remove from Watch Later
+                </button>
             </div>
         ))}
         </ul>
