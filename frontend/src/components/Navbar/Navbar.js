@@ -12,6 +12,11 @@ const Navbar = () => {
         }
     }, []);
 
+    const handleLogout = () => {
+        window.localStorage.removeItem("token")
+        window.localStorage.removeItem("userId")
+    }
+
     return (
 
         <nav className="navbar">
@@ -40,6 +45,7 @@ const Navbar = () => {
                 <li><a href="/homepage">Home</a></li>
                 <li><a href={"/users/" + userId}>Your Profile</a></li>
                 <li><a href={"/watchLater/" + userId}>Watch Later</a></li>
+                <li><a href='/login' onClick={handleLogout}>Logout</a></li>
             </ul>
             </>
         )}

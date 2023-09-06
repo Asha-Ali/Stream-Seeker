@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './LoginForm.css';
 import logo from '../../images/logo.png'
+import Navbar from '../Navbar/Navbar';
 
 
 const LogInForm = ({ navigate }) => {
@@ -47,42 +48,45 @@ const LogInForm = ({ navigate }) => {
   };
 
      return (
-       <form className="login-form" onSubmit={handleSubmit}>
-          <div className="logo-container">
-        <img src={logo} alt="Logo" className="logo" />
-          </div>
-         <h2>Login</h2>
-         <input
-           className="login-input"
-           placeholder="Email"
-           id="email"
-           type="text"
-           value={email}
-           onChange={handleEmailChange}
-         />
-         <input
-           className="login-input"
-           placeholder="Password"
-           id="password"
-           type="password"
-           value={password}
-           onChange={handlePasswordChange}
-         />
-         <input
-           role="submit-button"
-           className="submit-button"
-           id="submit"
-           type="submit"
-           value="LOG IN"
-         />
-         
-         {errorMessage && <p className="error"> {errorMessage} </p>}
+      <>
+        <Navbar />
+        <form className="login-form" onSubmit={handleSubmit}>
+            <div className="logo-container">
+          <img src={logo} alt="Logo" className="logo" />
+            </div>
+          <h2>Login</h2>
+          <input
+            className="login-input"
+            placeholder="Email"
+            id="email"
+            type="text"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <input
+            className="login-input"
+            placeholder="Password"
+            id="password"
+            type="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <input
+            role="submit-button"
+            className="submit-button"
+            id="submit"
+            type="submit"
+            value="LOG IN"
+          />
+          
+          {errorMessage && <p className="error"> {errorMessage} </p>}
 
-         <p>Not registered yet?</p>
-         <button onClick={signup} className="signup-button">
-           Sign up here!
-         </button>
-       </form>
+          <p>Not registered yet?</p>
+          <button onClick={signup} className="signup-button">
+            Sign up here!
+          </button>
+        </form>
+      </>
      );
 }
 
