@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import primeLogo from ".//logoPNGs/prime-logo.jpeg"
+import primeLogo from ".//logoPNGs/prime-logo.png"
 import iplayerLogo from './/logoPNGs/iplayer-logo.png'
-import nowLogo from './/logoPNGs/now-logo.jpeg'
+import nowLogo from './/logoPNGs/nowtv-logo.png'
+import britboxLogo from './/logoPNGs/britbox-logo.png'
+import disneyLogo from './/logoPNGs/disney-logo.png'
+import itvxLogo from './/logoPNGs/itvx-logo.png'
+import netflixLogo from './/logoPNGs/netflix-logo.png'
+import paramountLogo from './/logoPNGs/paramount-logo.png'
 
 const serviceLogoUrls = {
   prime: primeLogo, 
   iplayer: iplayerLogo,
-  now: nowLogo
-  // Add more services 
+  now: nowLogo,
+  britbox: britboxLogo,
+  disney: disneyLogo,
+  itvx: itvxLogo,
+  netflix: netflixLogo,
+  paramount: paramountLogo
 };
 
 function StreamingInfo() {
