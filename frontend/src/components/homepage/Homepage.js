@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom"; 
 import '../homepage/Homepage.css'
 import Navbar from "../Navbar/Navbar";
@@ -9,12 +9,34 @@ const Homepage = () => {
     const [showResults, setShowResults] = useState(false);
     const [watchLaterMovies, setWatchLaterMovies] = useState([]);
 
+    useEffect(() => {
+      const savedSearchResults = sessionStorage.getItem("searchResults");
+
+      if (savedSearchResults) {
+        setSearchResults(JSON.parse(savedSearchResults));
+        setShowResults(true);
+      }
+    
+      const handleBeforeUnload = () => {
+        sessionStorage.removeItem("searchResults");
+      };
+    
+      window.addEventListener("beforeunload", handleBeforeUnload);
+
+      return () => {
+          window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
+    }, []);
+    
+
     const handleSearch = async () => {
         try {
             const response = await fetch(`/homepage/bytitle/${title}`);
             const data = await response.json();
             setSearchResults(data);
             setShowResults(true)
+            sessionStorage.setItem("searchResults", JSON.stringify(data));
+
         } catch (error) {
             console.error("Error fetching search results: ", error);
         }
