@@ -8,6 +8,7 @@ const Homepage = () => {
     const [title, setTitle] = useState("");
     const [showResults, setShowResults] = useState(false);
     const [watchLaterMovies, setWatchLaterMovies] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
       const savedSearchResults = sessionStorage.getItem("searchResults");
@@ -45,6 +46,12 @@ const Homepage = () => {
     const addToWatchLater = async (movie) => {
         const id = window.localStorage.getItem('userId')
 
+        if (!id) {
+          // User is not logged in, show an error message
+          setErrorMessage("Please log in or sign up to add movies to your watch later list.");
+          return;
+        }
+
         try {
             const response = await fetch(`/watchLater/${id}`, {
                 method: "POST",
@@ -72,6 +79,10 @@ const Homepage = () => {
 
     const isAddedToWatchLater = (movie) => {
         return watchLaterMovies.some((watchLaterMovie) => watchLaterMovie.id === movie.id);
+    };
+
+    const closeErrorPopup = () => {
+        setErrorMessage(""); // Close the error pop-up
     };
 
     return (
@@ -113,6 +124,17 @@ const Homepage = () => {
                         >
                             {isAddedToWatchLater(result) ? "Added" : "Add to Watch Later"}
                     </button>
+                    {errorMessage && (
+                      <div className="error-popup">
+                          <div className="error-content">
+                              <p>{errorMessage}</p>
+                              <span className="close-button" onClick={closeErrorPopup}>
+                                  &times;
+                                  Close
+                              </span>
+                          </div>     
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
