@@ -42,7 +42,7 @@ const tokenChecker = (req, res, next) => {
 };
 
 // route setup
-app.use('/homepage', homepageRouter);
+app.use('/', homepageRouter);
 app.use("/tokens", authenticationRouter);
 app.use("/users", usersRouter);
 app.use("/watchLater", watchLaterRouter)

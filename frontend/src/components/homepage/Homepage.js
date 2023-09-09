@@ -32,7 +32,7 @@ const Homepage = () => {
 
     const handleSearch = async () => {
         try {
-            const response = await fetch(`/homepage/bytitle/${title}`);
+            const response = await fetch(`/bytitle/${title}`);
             const data = await response.json();
             setSearchResults(data);
             setShowResults(true)

@@ -31,7 +31,7 @@ const LogInForm = ({ navigate }) => {
       let data = await response.json()
       window.localStorage.setItem("token", data.token)
       window.localStorage.setItem("userId", data.userId)
-      navigate('/homepage');
+      navigate('/');
     }
   }
 

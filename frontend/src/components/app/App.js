@@ -20,7 +20,7 @@ const App = () => {
         <Routes>
           <Route path='/streaming-info/:id/:title' element={<StreamingInfo/>} />
           <Route path='/watchLater/:id' element={<WatchLater />} />
-          <Route path='/homepage' element={<Homepage/>}/>
+          <Route path='/' element={<Homepage/>}/>
           <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
           <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
           <Route path='/users/:userId' element={<UserProfile />}/>
