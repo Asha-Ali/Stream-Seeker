@@ -1,7 +1,9 @@
+require("dotenv").config();
 
 const SearchController = {
 
     FindByTitle: async (req, res) => {
+        console.log(process.env.API_KEY)
         const title = req.params.title;
         const response = await fetch(`https://api.themoviedb.org/3/search/multi?query=${title}&api_key=d98fecd179f9c5fabd732500cb91f754`);
         const data = await response.json();

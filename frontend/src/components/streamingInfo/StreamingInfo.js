@@ -8,6 +8,9 @@ import disneyLogo from './/logoPNGs/disney-logo.png'
 import itvxLogo from './/logoPNGs/itvx-logo.png'
 import netflixLogo from './/logoPNGs/netflix-logo.png'
 import paramountLogo from './/logoPNGs/paramount-logo.png'
+import appleLogo from './/logoPNGs/apple-logo.png'
+import all4Logo from './/logoPNGs/all4-logo.png'
+
 
 const serviceLogoUrls = {
   prime: primeLogo, 
@@ -17,7 +20,9 @@ const serviceLogoUrls = {
   disney: disneyLogo,
   itvx: itvxLogo,
   netflix: netflixLogo,
-  paramount: paramountLogo
+  paramount: paramountLogo,
+  apple: appleLogo,
+  all4: all4Logo
 };
 
 function StreamingInfo() {
