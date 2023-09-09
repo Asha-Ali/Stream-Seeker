@@ -1,13 +1,16 @@
+require("dotenv").config();
+
 const StreamingInfoController = {
 
     GetStreamingInfo: async (req, res) => {
         const { id, title } = req.params;
+        const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY
 
         try {
             const options = {
                 method: 'GET',
                 headers: {
-                    'X-RapidAPI-Key': 'eccbddc25dmsh68d0b312c157661p115c55jsn982b6a55478b',
+                    'X-RapidAPI-Key': `${rapidApiKey}`,
                     'X-RapidAPI-Host': 'streaming-availability.p.rapidapi.com',
                 },
             };
