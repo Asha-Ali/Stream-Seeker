@@ -8,27 +8,27 @@ const Homepage = () => {
     const [title, setTitle] = useState("");
     const [showResults, setShowResults] = useState(false);
     const [watchLaterMovies, setWatchLaterMovies] = useState([]);
-    const [errorMessage, setErrorMessage] = useState("");
+    const [notLoggedInError, setNotLoggedInError] = useState("");
+    const [noResultsError, setNoResultsError] = useState(false)
 
     useEffect(() => {
-      const savedSearchResults = sessionStorage.getItem("searchResults");
+        const savedSearchResults = sessionStorage.getItem("searchResults");
 
-      if (savedSearchResults) {
-        setSearchResults(JSON.parse(savedSearchResults));
-        setShowResults(true);
-      }
-    
-      const handleBeforeUnload = () => {
-        sessionStorage.removeItem("searchResults");
-      };
-    
-      window.addEventListener("beforeunload", handleBeforeUnload);
+        if (savedSearchResults) {
+          setSearchResults(JSON.parse(savedSearchResults));
+          setShowResults(true);
+        }
+      
+        const handleBeforeUnload = () => {
+            sessionStorage.removeItem("searchResults");
+        };
+        
+        window.addEventListener("beforeunload", handleBeforeUnload);
 
-      return () => {
-          window.removeEventListener("beforeunload", handleBeforeUnload);
-      };
-    }, []);
-    
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+      }, []);
 
     const handleSearch = async () => {
         try {
@@ -37,6 +37,10 @@ const Homepage = () => {
             setSearchResults(data);
             setShowResults(true)
             sessionStorage.setItem("searchResults", JSON.stringify(data));
+
+            if (data.length === 0) {
+              setNoResultsError(true)
+            }
 
         } catch (error) {
             console.error("Error fetching search results: ", error);
@@ -47,7 +51,7 @@ const Homepage = () => {
         const id = window.localStorage.getItem('userId')
 
         if (!id) {
-          setErrorMessage("Please log in or sign up to add movies to your watch later list.");
+          setNotLoggedInError("Please log in or sign up to add movies to your watch later list.");
           return;
         }
 
@@ -81,11 +85,10 @@ const Homepage = () => {
     };
 
     const closeErrorPopup = () => {
-        setErrorMessage(""); // Close the error pop-up
+      setNotLoggedInError("");
     };
 
-    return (
-        
+    return (   
         <div className="main-homepage-div">
             <Navbar />
           <div className="homepage-content">
@@ -123,10 +126,10 @@ const Homepage = () => {
                         >
                             {isAddedToWatchLater(result) ? "Added" : "Add to Watch Later"}
                     </button>
-                    {errorMessage && (
+                    {notLoggedInError && (
                       <div className="error-popup">
                           <div className="error-content">
-                              <p>{errorMessage}</p>
+                              <p>{notLoggedInError}</p>
                               <span className="close-button" onClick={closeErrorPopup}>
                                   &times;
                                   Close
@@ -137,6 +140,11 @@ const Homepage = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+          { noResultsError && (
+            <div>
+              <p>Sorry, we didn't find anything matching that</p>
             </div>
           )}
           </div>
