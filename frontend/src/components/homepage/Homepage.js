@@ -47,7 +47,6 @@ const Homepage = () => {
         const id = window.localStorage.getItem('userId')
 
         if (!id) {
-          // User is not logged in, show an error message
           setErrorMessage("Please log in or sign up to add movies to your watch later list.");
           return;
         }

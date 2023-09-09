@@ -57,6 +57,11 @@ function StreamingInfo() {
               )}
             </div>
           ))}
+          {streamingInfo.length === 0 && (
+            <div>
+              <p>Sorry this movie/show is not available in your region</p>
+            </div>
+          )}
         </div>
       ) : (
         <p>Loading...</p>
