@@ -8,26 +8,27 @@ const Homepage = () => {
     const [title, setTitle] = useState("");
     const [showResults, setShowResults] = useState(false);
     const [watchLaterMovies, setWatchLaterMovies] = useState([]);
+    const [notLoggedInError, setNotLoggedInError] = useState("");
+    const [noResultsError, setNoResultsError] = useState(false)
 
     useEffect(() => {
-      const savedSearchResults = sessionStorage.getItem("searchResults");
+        const savedSearchResults = sessionStorage.getItem("searchResults");
 
-      if (savedSearchResults) {
-        setSearchResults(JSON.parse(savedSearchResults));
-        setShowResults(true);
-      }
-    
-      const handleBeforeUnload = () => {
-        sessionStorage.removeItem("searchResults");
-      };
-    
-      window.addEventListener("beforeunload", handleBeforeUnload);
+        if (savedSearchResults) {
+          setSearchResults(JSON.parse(savedSearchResults));
+          setShowResults(true);
+        }
+      
+        const handleBeforeUnload = () => {
+            sessionStorage.removeItem("searchResults");
+        };
+        
+        window.addEventListener("beforeunload", handleBeforeUnload);
 
-      return () => {
-          window.removeEventListener("beforeunload", handleBeforeUnload);
-      };
-    }, []);
-    
+        return () => {
+            window.removeEventListener("beforeunload", handleBeforeUnload);
+        };
+      }, []);
 
     const handleSearch = async () => {
         try {
@@ -37,6 +38,10 @@ const Homepage = () => {
             setShowResults(true)
             sessionStorage.setItem("searchResults", JSON.stringify(data));
 
+            if (data.length === 0) {
+              setNoResultsError(true)
+            }
+
         } catch (error) {
             console.error("Error fetching search results: ", error);
         }
@@ -44,6 +49,11 @@ const Homepage = () => {
 
     const addToWatchLater = async (movie) => {
         const id = window.localStorage.getItem('userId')
+
+        if (!id) {
+          setNotLoggedInError("Please log in or sign up to add movies to your watch later list.");
+          return;
+        }
 
         try {
             const response = await fetch(`/watchLater/${id}`, {
@@ -74,8 +84,11 @@ const Homepage = () => {
         return watchLaterMovies.some((watchLaterMovie) => watchLaterMovie.id === movie.id);
     };
 
-    return (
-        
+    const closeErrorPopup = () => {
+      setNotLoggedInError("");
+    };
+
+    return (   
         <div className="main-homepage-div">
             <Navbar />
           <div className="homepage-content">
@@ -113,9 +126,25 @@ const Homepage = () => {
                         >
                             {isAddedToWatchLater(result) ? "Added" : "Add to Watch Later"}
                     </button>
+                    {notLoggedInError && (
+                      <div className="error-popup">
+                          <div className="error-content">
+                              <p>{notLoggedInError}</p>
+                              <span className="close-button" onClick={closeErrorPopup}>
+                                  &times;
+                                  Close
+                              </span>
+                          </div>     
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+          { noResultsError && (
+            <div>
+              <p>Sorry, we didn't find anything matching that</p>
             </div>
           )}
           </div>
