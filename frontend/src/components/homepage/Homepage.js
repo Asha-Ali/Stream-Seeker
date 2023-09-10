@@ -130,9 +130,11 @@ const Homepage = () => {
                       <div className="error-popup">
                           <div className="error-content">
                               <p>{notLoggedInError}</p>
-                              <span className="close-button" onClick={closeErrorPopup}>
-                                  &times;
-                                  Close
+                              <span className="close-button">
+                                  <button onClick={closeErrorPopup}>
+                                      &times;
+                                      Close
+                                  </button>
                               </span>
                           </div>     
                       </div>
