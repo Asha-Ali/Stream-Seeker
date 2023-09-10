@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from "../Navbar/Navbar"
 
-
 const UserProfile = () => {
     const [userInfo, setUserInfo] = useState([])
     const [token, setToken] = useState(window.localStorage.getItem("token"));
@@ -11,7 +10,6 @@ const UserProfile = () => {
     const [showError, setShowError] = useState(false) 
     const [editing, setEditing] = useState(false);
     const [subscriptions, setSubscriptions] = useState("");
-    const [genres, setGenres] = useState("");
 
     useEffect( () => {
         if(!token) {
@@ -28,7 +26,6 @@ const UserProfile = () => {
                 setToken(window.localStorage.getItem("token"));
                 setUserInfo(data);
                 setSubscriptions(data.subscriptions)
-                setGenres(data.genres)
                 setShowDetails(true);
             })
         } 
@@ -40,8 +37,7 @@ const UserProfile = () => {
 
     const handleSave = () => {
         const updatedData = {
-        subscriptions: subscriptions,
-        genres: genres,
+        subscriptions: subscriptions
         };
 
         fetch(`/users/${userId}`, {
@@ -78,20 +74,11 @@ const UserProfile = () => {
                         onChange={(e) => setSubscriptions(e.target.value)}
                         />
                         <br />
-                        <label htmlFor="genres">Genres:</label>
-                        <input
-                        type="text"
-                        id="genres"
-                        value={genres}
-                        onChange={(e) => setGenres(e.target.value)}
-                        />
-                        <br />
                         <button onClick={handleSave}>Save</button>
                     </>
                 ) : (
                     <>
                         <p className='subscriptions' data-cy="subscriptions">Subscriptions: {subscriptions}</p>
-                        <p className='genres' data-cy="genres">Genres: {genres}</p>
                         <button onClick={handleEdit}>Edit</button>
                     </>
                 )}

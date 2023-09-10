@@ -72,7 +72,6 @@ describe("/users", () => {
         password: '1password',
         name: '1testuser',
         subscriptions: ['Netflix'],
-        genres: ['Action'],
       });
       const savedUser = await user.save();
       const token = TokenGenerator.jsonwebtoken(savedUser._id);
@@ -86,15 +85,13 @@ describe("/users", () => {
       expect(response.body.password).toBeUndefined();
       expect(response.body.name).toEqual('1testuser');
       expect(response.body.subscriptions).toEqual(['Netflix']);
-      expect(response.body.genres).toEqual(['Action']);
     });
     test("returns 401 if not authorized", async () => {
       const user = new User({
         email: '2test@example.com',
         password: '2password2',
         name: '2testuser',
-        subscriptions: ['Disney'],
-        genres: ['Comedy'],
+        subscriptions: ['Disney']
       });
       const savedUser = await user.save();
       const token = TokenGenerator.jsonwebtoken(savedUser._id);
@@ -114,8 +111,7 @@ describe("/users", () => {
         email: '1test@example.com',
         password: '1password',
         name: '1testuser',
-        subscriptions: ['Netflix'],
-        genres: ['Action'],
+        subscriptions: ['Netflix']
         });
         const savedUser = await user.save();
         const userId = savedUser.id;
@@ -125,8 +121,7 @@ describe("/users", () => {
         email: '1test@example.com',
         password: '1password',
         name: '1testuser',
-        subscriptions: ['Prime'],
-        genres: ['Horror'],
+        subscriptions: ['Prime']
         };
     
         let response = await request(app)
@@ -139,11 +134,8 @@ describe("/users", () => {
         const updatedUser = await User.findById(userId);
     
         const updatedSubscriptions = updatedUser.subscriptions.toObject();
-        const updatedGenres = updatedUser.genres.toObject();
     
         expect(updatedSubscriptions).toEqual(updatedData.subscriptions);
-    
-        expect(updatedGenres).toEqual(updatedData.genres);
     });
   })
 

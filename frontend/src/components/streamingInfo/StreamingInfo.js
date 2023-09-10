@@ -62,6 +62,7 @@ function StreamingInfo() {
               )}
             </div>
           ))}
+          <p>Click on your chosen streaming provider to start watching! Enjoy!</p>
           {streamingInfo.length === 0 && (
             <div>
               <p>Sorry this movie/show is not available in your region</p>

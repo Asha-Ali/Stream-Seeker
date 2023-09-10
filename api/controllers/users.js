@@ -37,7 +37,6 @@ const UsersController = {
                 email: user.email, 
                 name: user.name,
                 subscriptions: user.subscriptions,
-                genres: user.genres,
                 token: token})
             } 
         })
@@ -54,7 +53,6 @@ const UsersController = {
     }
 
     user.subscriptions = req.body.subscriptions;
-    user.genres = req.body.genres
 
     user.save((err) => {
       if (err) {
