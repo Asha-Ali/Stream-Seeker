@@ -6,7 +6,6 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
   name: { type: String, required: true },
   subscriptions: { type: Array, required: false },
-  genres: { type: Array, required: false },
   watchLater: []
 });
 

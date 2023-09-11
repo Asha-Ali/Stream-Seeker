@@ -10,7 +10,7 @@ import netflixLogo from './/logoPNGs/netflix-logo.png'
 import paramountLogo from './/logoPNGs/paramount-logo.png'
 import appleLogo from './/logoPNGs/apple-logo.png'
 import all4Logo from './/logoPNGs/all4-logo.png'
-
+import "..//streamingInfo/StreamingInfo.css"
 
 const serviceLogoUrls = {
   prime: primeLogo, 
@@ -51,13 +51,13 @@ function StreamingInfo() {
     <div>
       {streamingInfo ? (
         <div>
-          <h1>Streaming Info</h1>
+          <h1>Streaming Options</h1>
           {streamingInfo.map((serviceInfo, index) => (
-            <div key={index}>
-              <h2>{serviceInfo.service}</h2>
+            <div className="streaming-links" key={index}>
+              {/* <h2>{serviceInfo.service}</h2> */}
               {serviceLogoUrls[serviceInfo.service] && (
                 <a href={serviceInfo.link} target="_blank" rel="noopener noreferrer">
-                  <img src={serviceLogoUrls[serviceInfo.service]} alt={serviceInfo.service} />
+                  <img className="provider-logo" src={serviceLogoUrls[serviceInfo.service]} alt={serviceInfo.service} />
                 </a>
               )}
             </div>
@@ -66,6 +66,9 @@ function StreamingInfo() {
             <div>
               <p>Sorry this movie/show is not available in your region</p>
             </div>
+          )}
+          { streamingInfo.length > 0 && (
+            <p>Click on your chosen streaming provider to start watching! Enjoy!</p>
           )}
         </div>
       ) : (

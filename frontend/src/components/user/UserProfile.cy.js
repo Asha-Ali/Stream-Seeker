@@ -12,7 +12,6 @@ describe("User information page", () => {
         email: "testEmail", 
         name: "testUserName", 
         subscriptions: ['Netflix'], 
-        genres: ['Action'], 
         token: 'fakeToken' 
         }).as('getUserInfo');
 
@@ -29,13 +28,12 @@ describe("User information page", () => {
     cy.get('[data-cy=email]').should("contain.text", "Email: testEmail");
     cy.get('[data-cy=name]').should('contain.text', "Name: testUserName");
     cy.get('[data-cy=subscriptions]').should('contain.text', "Subscriptions: Netflix");
-    cy.get('[data-cy=genres]').should('contain.text', "Genres: Action");
 	})
 
 })
 
 describe("User information page", () => {
-    it("updates subscriptions and genres and displays updated info after save", () => {
+    it("updates subscriptions and displays updated info after save", () => {
         window.localStorage.setItem("token", "fakeToken");
     
         cy.intercept("GET", "/users/1", {
@@ -43,7 +41,6 @@ describe("User information page", () => {
                 email: "testEmail",
                 name: "testUserName",
                 subscriptions: ['Netflix'],
-                genres: ['Action']
             },
                 token: 'fakeToken'
         }).as('getUserInfo');
@@ -65,7 +62,6 @@ describe("User information page", () => {
                     email: "testEmail",
                     name: "testUserName",
                     subscriptions: ['Hulu', 'Prime'], 
-                    genres: ['Comedy', 'Drama']    
                     }, 
                 token: 'fakeToken'
             }
@@ -74,16 +70,13 @@ describe("User information page", () => {
         cy.contains('Edit').click();
     
         cy.get('#subscriptions').should('be.visible');
-        cy.get('#genres').should('be.visible');
     
         cy.get('#subscriptions').clear().type('Hulu, Prime');
-        cy.get('#genres').clear().type('Comedy, Drama');
     
         cy.contains('Save').click();
     
         cy.wait('@updateUserInfo');
     
         cy.get('[data-cy=subscriptions]').should('contain.text', "Subscriptions: Hulu, Prime");
-        cy.get('[data-cy=genres]').should('contain.text', "Genres: Comedy, Drama");
         });
     });
