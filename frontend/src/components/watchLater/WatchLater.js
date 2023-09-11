@@ -56,7 +56,7 @@ const WatchLater = () => {
     return (
         <div>
         <Navbar />
-        <h2>Movies in Watch Later</h2>
+        <h2 className='heading'>Movies in Watch Later</h2>
         {watchLaterMovies.length > 0 ? (
         <ul>
         {watchLaterMovies.map((movie) => (

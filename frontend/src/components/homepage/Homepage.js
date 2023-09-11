@@ -94,12 +94,13 @@ const Homepage = () => {
           <div className="homepage-content">
           <h1 id="heading">Search for a Movie or TV show</h1>
           <input
+            className="search-button"
             type="text"
             placeholder="Enter a title"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
-          <button onClick={handleSearch}>Search</button>
+          <button className='submit-search' onClick={handleSearch}>Search</button>
           {showResults && (
             <div>
               <h2>Search Results</h2>
@@ -118,7 +119,7 @@ const Homepage = () => {
                     <p>Rating: {result.vote_average ? result.vote_average.toFixed(1) : 'N/A'}</p>
                     <Link to={`/streaming-info/${result.id}/${result.title ? result.title : result.name}`} 
                           style={{ textDecoration: 'none' }}>
-                          <p><strong>Click here for Streaming Links</strong></p>
+                          <p className="streaming-link"><strong>Click here for Streaming Links</strong></p>
                     </Link>
                     <button
                             onClick={() => addToWatchLater(result)}

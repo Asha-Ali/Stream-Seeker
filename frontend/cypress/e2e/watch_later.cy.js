@@ -13,3 +13,9 @@ describe("WatchLater Page", () => {
         });
     
 });
+
+// Login and go to Watch Later shows movie in watch later
+
+// Login, go to watch later, click on 'remove from watch later', movie should no longer be in list 
+
+// Clicking on streaming link from watch later redirects you correctly 
