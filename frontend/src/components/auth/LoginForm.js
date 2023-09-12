@@ -82,7 +82,7 @@ const LogInForm = ({ navigate }) => {
           {errorMessage && <p className="error"> {errorMessage} </p>}
 
           <p>Not registered yet?</p>
-          <button onClick={signup} className="signup-button">
+          <button onClick={signup} className="signup-button" id='signup'>
             Sign up here!
           </button>
         </form>

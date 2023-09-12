@@ -25,7 +25,7 @@ describe("Login", () => {
     cy.visit("/login");
     cy.wait(1000)
     
-    cy.get(".signup-button").click();
+    cy.get("#signup").click();
 
     cy.url().should("include", "/signup"); 
   })
