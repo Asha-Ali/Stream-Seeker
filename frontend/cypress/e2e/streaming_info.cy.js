@@ -31,6 +31,8 @@ describe('Streaming Info', () => {
     cy.get('.search-button').type('After party')
     cy.get('.submit-search').click()
 
+    cy.get('.title').should('be.visible');
+
     cy.get('.streaming-link').first().click();
 
     cy.contains('Sorry this movie/show is not available in your region').should('exist');  

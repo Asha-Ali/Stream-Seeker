@@ -11,9 +11,7 @@ describe("Homepage", () => {
       .next() 
       .should("not.be.empty");
   });
-});
 
-// describe("Homepage and Streaming Info", () => {
 //   it("allows you to click streaming links and view streaming options", () => {
 //     cy.visit("/"); 
 
@@ -32,7 +30,10 @@ describe("Homepage", () => {
 
 //     cy.contains("Click on your chosen streaming provider to start watching! Enjoy!").should("be.visible");
 //   });
-// });
+
+});
+
+
 
 // Searches for a title, clicks on add to watch later but gets error because not logged in
 

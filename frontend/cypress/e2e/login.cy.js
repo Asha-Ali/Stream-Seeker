@@ -23,7 +23,8 @@ describe("Login", () => {
 
   it("redirects to sign up if user clicks Sign Up", () => {
     cy.visit("/login");
-
+    cy.wait(1000)
+    
     cy.get(".signup-button").click();
 
     cy.url().should("include", "/signup"); 

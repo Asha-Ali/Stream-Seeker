@@ -107,7 +107,7 @@ const Homepage = () => {
               <div>
                 {searchResults.map((result, index) => (
                   <div key={index}>
-                    <h2>{result.title ? result.title : result.name}</h2>
+                    <h2 className="title">{result.title ? result.title : result.name}</h2>
                     <p>Synopsis: {result.overview}</p>
                     <div className="poster-container">
                       <img
@@ -122,6 +122,7 @@ const Homepage = () => {
                           <p className="streaming-link"><strong>Click here for Streaming Links</strong></p>
                     </Link>
                     <button
+                            className="add"
                             onClick={() => addToWatchLater(result)}
                             disabled={isAddedToWatchLater(result)}
                         >
