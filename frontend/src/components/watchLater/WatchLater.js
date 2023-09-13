@@ -56,12 +56,12 @@ const WatchLater = () => {
     return (
         <div>
         <Navbar />
-        <h2>Movies in Watch Later</h2>
+        <h2 className='heading'>Your Watch Later List</h2>
         {watchLaterMovies.length > 0 ? (
         <ul>
         {watchLaterMovies.map((movie) => (
             <div key={movie.id}>
-                <h2>{movie.title ? movie.title : movie.name}</h2>
+                <h2 className='title'>{movie.title ? movie.title : movie.name}</h2>
                 <p>Synopsis: {movie.overview}</p>
                 <div className="poster-container">
                         <img
@@ -72,17 +72,20 @@ const WatchLater = () => {
                 </div>
                 <p>Rating: {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}</p>
                 <Link to={`/streaming-info/${movie.id}/${movie.title ? movie.title : movie.name}`} 
-                    style={{ textDecoration: 'none' }}>
+                    style={{ textDecoration: 'none' }}
+                    className='streaming-link'>
                     <p><strong>Click here for Streaming Links</strong></p>
                 </Link>
-                <button onClick={() => removeFromWatchLater(movie.id)}>
+                <button 
+                    className='remove'
+                    onClick={() => removeFromWatchLater(movie.id)}>
                     Remove from Watch Later
                 </button>
             </div>
         ))}
         </ul>
             ) : (
-        <p>No movies in watch later.</p>
+        <p>Nothing in watch later list. Search and add something</p>
         )}
         </div>
     );

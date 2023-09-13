@@ -56,14 +56,14 @@ function StreamingInfo() {
             <div className="streaming-links" key={index}>
               {/* <h2>{serviceInfo.service}</h2> */}
               {serviceLogoUrls[serviceInfo.service] && (
-                <a href={serviceInfo.link} target="_blank" rel="noopener noreferrer">
+                <a className='provider-link' href={serviceInfo.link} target="_blank" rel="noopener noreferrer">
                   <img className="provider-logo" src={serviceLogoUrls[serviceInfo.service]} alt={serviceInfo.service} />
                 </a>
               )}
             </div>
           ))}
           {streamingInfo.length === 0 && (
-            <div>
+            <div className='error-message'>
               <p>Sorry this movie/show is not available in your region</p>
             </div>
           )}

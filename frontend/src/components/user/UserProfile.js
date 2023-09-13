@@ -74,19 +74,19 @@ const UserProfile = () => {
                         onChange={(e) => setSubscriptions(e.target.value)}
                         />
                         <br />
-                        <button onClick={handleSave}>Save</button>
+                        <button className='save' onClick={handleSave}>Save</button>
                     </>
                 ) : (
                     <>
                         <p className='subscriptions' data-cy="subscriptions">Subscriptions: {subscriptions}</p>
-                        <button onClick={handleEdit}>Edit</button>
+                        <button className='edit' onClick={handleEdit}>Edit</button>
                     </>
                 )}
             </div>
         </div>
         )}
         { showError && (
-            <div>
+            <div className='error-message'>
                 <p>Sorry, you need to be logged in to see your profile</p>
                 <a href='/login'>Go to Login</a>
             </div>

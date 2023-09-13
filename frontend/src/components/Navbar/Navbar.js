@@ -31,9 +31,9 @@ const Navbar = () => {
             </div>
             </div>
             <ul className="links">
-                <li><Link to="/" className={pathname === "/" ? "active" : ""}>Home</Link></li>
-                <li><Link to="/login" className={pathname === "/login" ? "active" : ""}>Login</Link></li>
-                <li><Link to="/signup" className={pathname === "/signup" ? "active" : ""}>Signup</Link></li>
+                <li><Link to="/" className={pathname === "/" ? "active" : ""} id='home'>Home</Link></li>
+                <li><Link to="/login" className={pathname === "/login" ? "active" : ""} id="login">Login</Link></li>
+                <li><Link to="/signup" className={pathname === "/signup" ? "active" : ""} id="signup">Signup</Link></li>
             </ul>
         </>
         )}
@@ -45,10 +45,10 @@ const Navbar = () => {
                 </div>
             </div>
             <ul className="links">
-                <li><Link to="/" className={pathname === "/" ? "active" : ""}>Home</Link></li>
-                <li><Link to={`/users/${userId}`} className={pathname === `/users/${userId}` ? "active" : ""}>Your Profile</Link></li>
-                <li><Link to={`/watchLater/${userId}`} className={pathname === `/watchLater/${userId}` ? "active" : ""}>Watch Later</Link></li>
-                <li><a href='/' onClick={handleLogout}>Logout</a></li>
+                <li><Link to="/" className={pathname === "/" ? "active" : ""} id='home'>Home</Link></li>
+                <li><Link to={`/users/${userId}`} className={pathname === `/users/${userId}` ? "active" : ""} id="profile">Your Profile</Link></li>
+                <li><Link to={`/watchLater/${userId}`} className={pathname === `/watchLater/${userId}` ? "active" : ""} id="watch-later">Watch Later</Link></li>
+                <li><a href='/' onClick={handleLogout} id="logout">Logout</a></li>
             </ul>
             </>
         )}
