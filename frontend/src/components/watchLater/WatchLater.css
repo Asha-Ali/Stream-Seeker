@@ -1,0 +1,53 @@
+.heading {
+  text-align: center;
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.watch-later-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 20px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 70%;
+  border-radius: 10px;
+}
+
+.content-left {
+  flex: 0 0 auto; 
+  margin-right: 20px; 
+}
+
+.content-right {
+  flex: 1;
+  text-align: left;
+}
+
+.remove {
+  width: 20%;
+  padding: 5px;  
+  margin-bottom: 5px;
+  border: 0.5px solid;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgba(236, 233, 249, 0.6);
+}
+
+/* background-color: rgb(239, 233, 249); */
+/* background-color: rgb(236, 233, 249); */

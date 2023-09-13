@@ -77,7 +77,7 @@ function StreamingInfo() {
           )}
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className='loading'>Loading...</p>
       )}
     </div>
     </>

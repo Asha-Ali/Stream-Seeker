@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from "../Navbar/Navbar"
+import "../user/UserProfile.css"
 
 const UserProfile = () => {
     const [userInfo, setUserInfo] = useState([])
@@ -61,27 +62,41 @@ const UserProfile = () => {
         { showDetails && (
         <div className='info-div'>
             <h2 className='heading'>Your Profile</h2>
+            <div className='details-div'>
             <div>
-                <p className='email' data-cy="email">Email: {userInfo.email}</p>
-                <p className='name' data-cy="name">Name: {userInfo.name}</p>
+                <div className='email-div'>
+                    <p className='email-label' data-cy="email">Email: </p>
+                    <p className='email'>{userInfo.email}</p>
+                </div>
+                <div className='name-div'>
+                    <p className='name-label' data-cy="name">Name:</p>
+                    <p className='name'>{userInfo.name}</p>
+                </div>
                 { editing ? (
                     <>
-                        <label htmlFor="subscriptions">Subscriptions:</label>
+                    <div className='subscriptions-div'>
+                        <label className='subscriptions-label' htmlFor="subscriptions">Subscriptions:</label>
                         <input
                         type="text"
+                        className='subscriptions'
                         id="subscriptions"
                         value={subscriptions}
                         onChange={(e) => setSubscriptions(e.target.value)}
                         />
+                    </div>
                         <br />
                         <button className='save' onClick={handleSave}>Save</button>
                     </>
                 ) : (
                     <>
-                        <p className='subscriptions' data-cy="subscriptions">Subscriptions: {subscriptions}</p>
+                        <div className='subscriptions-div'>
+                            <p className='subscriptions-label' data-cy="subscriptions">Subscriptions:</p>
+                            <p className='subscriptions'>{subscriptions}</p>
+                        </div>
                         <button className='edit' onClick={handleEdit}>Edit</button>
                     </>
                 )}
+            </div>
             </div>
         </div>
         )}
