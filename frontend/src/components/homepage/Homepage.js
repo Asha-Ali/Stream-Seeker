@@ -87,7 +87,7 @@ const Homepage = () => {
     const closeErrorPopup = () => {
       setNotLoggedInError("");
     };
-
+    
     return (   
         <div className="main-homepage-div">
             <Navbar />
