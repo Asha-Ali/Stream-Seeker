@@ -104,43 +104,46 @@ const Homepage = () => {
           {showResults && (
             <div>
               <h2>Search Results</h2>
-              <div>
+              <div className="search-results">
                 {searchResults.map((result, index) => (
-                  <div key={index}>
-                    <h2 className="title">{result.title ? result.title : result.name}</h2>
-                    <p>Synopsis: {result.overview}</p>
-                    <div className="poster-container">
+                  <div key={index} className="result-card">
+                    <div className="poster-container result-card-left">
                       <img
                         className="poster-image"
                         src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} // poster_path is null in some movies
                         alt={result.title}
                       />
                     </div>
-                    <p>Rating: {result.vote_average ? result.vote_average.toFixed(1) : 'N/A'}</p>
-                    <Link to={`/streaming-info/${result.id}/${result.title ? result.title : result.name}`} 
-                          style={{ textDecoration: 'none' }}>
-                          <p className="streaming-link"><strong>Click here for Streaming Links</strong></p>
-                    </Link>
-                    <button
-                            className="add"
-                            onClick={() => addToWatchLater(result)}
-                            disabled={isAddedToWatchLater(result)}
-                        >
-                            {isAddedToWatchLater(result) ? "Added" : "Add to Watch Later"}
-                    </button>
+                    <div className="result-card-container">
+                    <div className="result-card-right">
+                      <h2 className="title">{result.title ? result.title : result.name}</h2>
+                      <p>Synopsis: {result.overview}</p>
+                      <p>Rating: {result.vote_average ? result.vote_average.toFixed(1) : 'N/A'}</p>
+                      <Link to={`/streaming-info/${result.id}/${result.title ? result.title : result.name}`} 
+                            style={{ textDecoration: 'none' }}>
+                            <p className="streaming-link"><strong>Click here for Streaming Links</strong></p>
+                      </Link>
+                      <button
+                              className="add"
+                              onClick={() => addToWatchLater(result)}
+                              disabled={isAddedToWatchLater(result)}
+                          >
+                              {isAddedToWatchLater(result) ? "Added" : "Add to Watch Later"}
+                      </button>
+                    </div>
                     {notLoggedInError && (
                       <div className="error-popup">
-                          <div className="error-content">
-                              <p>{notLoggedInError}</p>
-                              <span className="close-button">
-                                  <button onClick={closeErrorPopup}>
-                                      &times;
-                                      Close
-                                  </button>
-                              </span>
-                          </div>     
+                        <div className="error-content">
+                          <div className="error-message">
+                            <p>{notLoggedInError}</p>
+                          </div>
+                          <div className="close-button">
+                            <button id="close-button" onClick={closeErrorPopup}>Close</button>
+                          </div>
+                        </div>
                       </div>
                     )}
+                    </div>
                   </div>
                 ))}
               </div>
