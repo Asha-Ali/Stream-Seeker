@@ -1,7 +1,6 @@
-.homepage-content{
-    margin-left: 20px;
+.title {
+    margin-top: 0;
 }
-
 .poster-container {
     width: 150px;
     height: auto;
@@ -13,3 +12,110 @@
     height: auto;
 }
 
+.search-button {
+    width: 50%;
+    padding: 10px;  
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.submit-search {
+    width: 10%;
+    padding: 5px;  
+    margin-bottom: 5px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: rgb(121, 116, 143);
+    color: white;
+}
+
+.add {
+    width: 16%;
+    padding: 5px;  
+    margin-bottom: 5px;
+    border: 0.5px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: rgba(236, 233, 249, 0.6);
+}
+
+.homepage-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.result-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px; /* Adjust spacing between result cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    width: 70%;
+    border-radius: 10px;
+}
+
+.result-card-left {
+    flex: 0 0 auto; /* Prevent image from growing */
+    margin-right: 20px; /* Adjust spacing between image and text */
+}
+
+.result-card-right {
+    flex: 1; /* Allow text and buttons to grow and fill available space */
+    text-align: left;
+}
+
+.result-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.error-popup {
+    position: relative;
+    top: 10px; /* Adjust the distance between the result card and error popup */
+    background-color: #fff; /* Customize the background color */
+}
+
+.error-content {
+display: flex;
+align-items: center;
+}
+
+.error-message {
+flex: 1;
+align-self: flex-start;
+font-weight: 600;
+margin-top: 0;
+margin-bottom: 5px;
+}
+
+.close-button {
+flex-shrink: 0; /* Prevent the close button from growing */
+margin-left: 10px;
+}
+
+#close-button {
+    width: 120%;
+    padding: 1px;  
+    margin-bottom: 2px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import Navbar from "../Navbar/Navbar"
 import primeLogo from ".//logoPNGs/prime-logo.png"
 import iplayerLogo from './/logoPNGs/iplayer-logo.png'
 import nowLogo from './/logoPNGs/nowtv-logo.png'
@@ -48,9 +49,13 @@ function StreamingInfo() {
   }, [id, title]);
 
   return (
+    <>
+    <Navbar />
     <div>
       {streamingInfo ? (
-        <div>
+        <div className='streaming-info'>
+          <br />
+          <br />
           <h1>Streaming Options</h1>
           {streamingInfo.map((serviceInfo, index) => (
             <div className="streaming-links" key={index}>
@@ -72,9 +77,10 @@ function StreamingInfo() {
           )}
         </div>
       ) : (
-        <p>Loading...</p>
+        <p className='loading'>Loading...</p>
       )}
     </div>
+    </>
   );
 }
 
