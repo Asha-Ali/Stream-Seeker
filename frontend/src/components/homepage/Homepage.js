@@ -111,7 +111,7 @@ const Homepage = () => {
                     <div className="poster-container result-card-left">
                       <img
                         className="poster-image"
-                        src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} // poster_path is null in some movies
+                        src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} 
                         alt={result.title}
                       />
                     </div>

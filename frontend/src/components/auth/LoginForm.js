@@ -87,7 +87,7 @@ const LogInForm = ({ navigate }) => {
           </button>
         </form>
       </>
-     );
+    );
 }
 
 export default LogInForm;

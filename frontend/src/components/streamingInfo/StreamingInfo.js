@@ -59,7 +59,6 @@ function StreamingInfo() {
           <h1>Streaming Options</h1>
           {streamingInfo.map((serviceInfo, index) => (
             <div className="streaming-links" key={index}>
-              {/* <h2>{serviceInfo.service}</h2> */}
               {serviceLogoUrls[serviceInfo.service] && (
                 <a className='provider-link' href={serviceInfo.link} target="_blank" rel="noopener noreferrer">
                   <img className="provider-logo" src={serviceLogoUrls[serviceInfo.service]} alt={serviceInfo.service} />

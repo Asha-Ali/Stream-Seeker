@@ -63,19 +63,19 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    margin-bottom: 20px; /* Adjust spacing between result cards */
+    margin-bottom: 20px; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     width: 70%;
     border-radius: 10px;
 }
 
 .result-card-left {
-    flex: 0 0 auto; /* Prevent image from growing */
-    margin-right: 20px; /* Adjust spacing between image and text */
+    flex: 0 0 auto; 
+    margin-right: 20px;
 }
 
 .result-card-right {
-    flex: 1; /* Allow text and buttons to grow and fill available space */
+    flex: 1; 
     text-align: left;
 }
 
@@ -87,8 +87,8 @@
 
 .error-popup {
     position: relative;
-    top: 10px; /* Adjust the distance between the result card and error popup */
-    background-color: #fff; /* Customize the background color */
+    top: 10px; 
+    background-color: #fff; 
 }
 
 .error-content {

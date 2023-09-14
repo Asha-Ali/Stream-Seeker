@@ -6,7 +6,6 @@ const JWT = require("jsonwebtoken");
 const TokenGenerator = require("../../lib/token_generator");
 const secret = process.env.JWT_SECRET;
 
-let token;
 
 describe("/users", () => {
   beforeEach( async () => {

@@ -3,7 +3,7 @@ require("dotenv").config();
 const StreamingInfoController = {
 
     GetStreamingInfo: async (req, res) => {
-        const { id, title } = req.params;
+        const { id } = req.params;
         const rapidApiKey = process.env.REACT_APP_RAPID_API_KEY
 
         try {
