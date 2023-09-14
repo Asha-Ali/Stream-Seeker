@@ -1,25 +1,16 @@
-/* .info-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: left;
-  text-align: center;
-  padding: 20px;
-} */
 
 .info-div {
-  text-align: center; /* Center the heading and its content horizontally */
+  text-align: center; 
 }
 
 .heading {
-  /* Center the heading text */
-  display: inline-block; /* Make the heading behave like an inline block */
-  padding: 10px; /* Add padding to visually separate the heading */
+  display: inline-block; 
+  padding: 10px; 
 }
 
 .details-div {
-  text-align: left; /* Justify the content underneath to the left */
-  margin: auto; /* Add some space between the heading and content */
+  text-align: left; 
+  margin: auto; 
   display: flex;
   flex-direction: column;
   align-items: left;

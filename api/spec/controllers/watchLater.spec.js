@@ -46,7 +46,6 @@ describe("POST /watchLater/:id", () => {
         const addedMovie = updatedUser.watchLater[0];
     
         expect(addedMovie.title).toEqual(movieToAdd.title);
-        // Add more assertions for other properties if needed
         });
     });
     
