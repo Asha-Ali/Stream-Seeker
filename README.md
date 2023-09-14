@@ -13,7 +13,7 @@ Streamseekers saves you the time and effort of searching each of your streaming 
 - TMDB api
 - Rapid api 
 
-[Demo Video](https://m1m1-a.github.io/Portfolio/)
+Click here to see a preview: [Demo Video](https://m1m1-a.github.io/Portfolio/)
 
 
 
