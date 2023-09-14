@@ -92,7 +92,8 @@ const Homepage = () => {
         <div className="main-homepage-div">
             <Navbar />
           <div className="homepage-content">
-          <h1 id="heading">Search for a Movie or TV show</h1>
+          <h1 id="heading">Want to know where to stream that Movie or TV show?</h1>
+          <h2 id="sub-heading">Search below to see all your options</h2>
           <input
             className="search-button"
             type="text"
