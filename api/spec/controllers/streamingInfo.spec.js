@@ -1,4 +1,4 @@
-const StreamingInfoController = require('../../controllers/streamingInfoController'); // Update the path as per your project structure
+const StreamingInfoController = require('../../controllers/streamingInfoController'); 
 const fetchMock = require('jest-fetch-mock');
 
 fetchMock.enableMocks();

@@ -1,4 +1,4 @@
-const SearchController = require('../../controllers/searchController'); // Update the path as per your project structure
+const SearchController = require('../../controllers/searchController'); 
 const fetchMock = require('jest-fetch-mock');
 
 fetchMock.enableMocks();
